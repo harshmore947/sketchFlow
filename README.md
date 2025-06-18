@@ -9,33 +9,29 @@ A modern drawing and sketching app built with Next.js and Excalidraw integration
 
 ## 📸 Screenshots
 
-### Dashboard & Note Management
+### Landing Page
 
-![Dashboard](./screenshots/Screenshot%202025-06-18%20184000.png)
+![Landing Page](./screenshots/LandingPage.png)
 
-### Drawing Workspace with Excalidraw
+### Dashboard
 
-![Drawing Workspace](./screenshots/Screenshot%202025-06-18%20184009.png)
+![Dashboard](./screenshots/Dashboard.png)
 
-### Authentication & Login
+### Authentication
 
-![Authentication](./screenshots/Screenshot%202025-06-18%20184031.png)
+![Google and GitHub Auth](./screenshots/Google%20and%20Github%20Auth.png)
 
-### Search & Filter Features
+### Drawing Canvas
 
-![Search Features](./screenshots/Screenshot%202025-06-18%20184218.png)
+![Canvas Page 1](./screenshots/Canvar%20page%201.png)
 
-### Hover Actions & Note Cards
+### Canvas with Tools
 
-![Hover Actions](./screenshots/Screenshot%202025-06-18%20184248.png)
+![Canvas Page 2](./screenshots/Canvas%20page%202.png)
 
-### Mobile Responsive Design
+### Save Functionality
 
-![Mobile View](./screenshots/Screenshot%202025-06-18%20184304.png)
-
-### Homepage & Landing
-
-![Homepage](./screenshots/Screenshot%202025-06-18%20183639.png)
+![Canvas Page Save](./screenshots/Canvas%20Page%20save.png)
 
 ## ✨ Features
 
