@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { Button } from "../ui/button";
 import {
   Dialog,
@@ -12,15 +12,28 @@ import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { useSession, signIn } from "next-auth/react";
 
-function AuthDialog() {
+interface AuthDialogProps {
+  className?: string;
+  size?: "default" | "sm" | "lg" | "icon";
+  children?: React.ReactNode;
+}
+
+function AuthDialog({
+  className,
+  size = "default",
+  children,
+}: AuthDialogProps) {
   return (
     <Dialog>
       <DialogTrigger asChild>
         <Button
           variant="outline"
-          className="text-white border-white/30 hover:bg-white/20"
+          size={size}
+          className={
+            className || "text-white border-white/30 hover:bg-white/20"
+          }
         >
-          SignIn
+          {children || "Sign In"}
         </Button>
       </DialogTrigger>
       <DialogContent>

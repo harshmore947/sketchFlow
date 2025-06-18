@@ -23,17 +23,22 @@ export default function Home() {
           <p className="text-xl md:text-2xl text-gray-300 mb-8">
             Create beautiful diagrams and sketches with Excalidraw integration
           </p>
-          <Button
-            className="h-14 bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold transition-colors"
-            size={"lg"}
-            onClick={() => {
-              if (session?.user) {
-                router.push("/dashboard");
-              }
-            }}
-          >
-            {session?.user ? "Continue to Dashboard" : <AuthDialog />}
-          </Button>
+          {session?.user ? (
+            <Button
+              className="h-14 bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold transition-colors"
+              size={"lg"}
+              onClick={() => router.push("/dashboard")}
+            >
+              Continue to Dashboard
+            </Button>
+          ) : (
+            <AuthDialog
+              className="h-14 bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold transition-colors"
+              size="lg"
+            >
+              Get Started
+            </AuthDialog>
+          )}
         </div>
       </section>
 
@@ -132,16 +137,18 @@ export default function Home() {
             Join users who are already creating amazing diagrams with SketchFlow
           </p>
           <div className="flex flex-col md:flex-row gap-4 justify-center">
-            <Button
-              className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold transition-colors"
-              onClick={() => {
-                if (session?.user) {
-                  router.push("/dashboard");
-                }
-              }}
-            >
-              {session?.user ? "Go to Dashboard" : <AuthDialog />}
-            </Button>
+            {session?.user ? (
+              <Button
+                className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold transition-colors"
+                onClick={() => router.push("/dashboard")}
+              >
+                Go to Dashboard
+              </Button>
+            ) : (
+              <AuthDialog className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold transition-colors">
+                Get Started
+              </AuthDialog>
+            )}
             <Button
               variant="outline"
               className="border-white/20 text-white px-8 py-4 rounded-full text-lg font-semibold transition-colors hover:bg-white/10"
