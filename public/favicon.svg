@@ -1,0 +1,15 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="16" cy="16" r="15" fill="#3B82F6" stroke="#2563EB" strokeWidth="1.5"/>
+  
+  <!-- Pencil Icon -->
+  <path d="M21 10L18 13L17 12L20 9L21 10Z" fill="white"/>
+  <path d="M17 12L12 17L11 21L15 20L20 15L17 12Z" fill="white"/>
+  
+  <!-- Flow Lines -->
+  <path d="M8 13C9 12 11 12 12 13" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+  <path d="M9 19C10 17 11 17 13 19" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+  
+  <!-- Sparkle -->
+  <circle cx="24" cy="8" r="1" fill="#FCD34D"/>
+</svg> 

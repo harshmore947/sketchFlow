@@ -1,103 +1,161 @@
-import Image from "next/image";
+"use client";
+import AuthDialog from "@/components/common/AuthDialog";
+import { Button } from "@/components/ui/button";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import Logo from "@/components/common/Logo";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const router = useRouter();
+  const { data: session } = useSession();
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  return (
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="pt-8 px-4 md:px-8">
+        <div className="max-w-6xl mx-auto text-center">
+          <div className="flex justify-center mb-6">
+            <Logo size="lg" />
+          </div>
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white">
+            Draw, Create, <span className="text-blue-500">Flow</span>
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-300 mb-8">
+            Create beautiful diagrams and sketches with Excalidraw integration
+          </p>
+          <Button
+            className="h-14 bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold transition-colors"
+            size={"lg"}
+            onClick={() => {
+              if (session?.user) {
+                router.push("/dashboard");
+              }
+            }}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            {session?.user ? "Continue to Dashboard" : <AuthDialog />}
+          </Button>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20 px-4 md:px-8">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
+            Powerful features for your creative workflow
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Feature 1 */}
+            <div className="bg-white/5 backdrop-blur-sm p-6 rounded-xl">
+              <div className="text-blue-500 text-2xl mb-4">✏️</div>
+              <h3 className="text-xl font-semibold text-white mb-2">
+                Excalidraw Integration
+              </h3>
+              <p className="text-gray-300">
+                Professional drawing tools with shapes, text, and freehand
+                drawing
+              </p>
+            </div>
+            {/* Feature 2 */}
+            <div className="bg-white/5 backdrop-blur-sm p-6 rounded-xl">
+              <div className="text-blue-500 text-2xl mb-4">📁</div>
+              <h3 className="text-xl font-semibold text-white mb-2">
+                Smart Note Management
+              </h3>
+              <p className="text-gray-300">
+                Organize with starring, archiving, and search functionality
+              </p>
+            </div>
+            {/* Feature 3 */}
+            <div className="bg-white/5 backdrop-blur-sm p-6 rounded-xl">
+              <div className="text-blue-500 text-2xl mb-4">💾</div>
+              <h3 className="text-xl font-semibold text-white mb-2">
+                Auto-Save & Export
+              </h3>
+              <p className="text-gray-300">
+                Automatic saving and export drawings as .excalidraw files
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Additional Features */}
+      <section className="py-20 px-4 md:px-8 bg-white/5">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
+            Everything you need to stay organized
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="text-center">
+              <div className="text-blue-500 text-3xl mb-3">⭐</div>
+              <h3 className="text-lg font-semibold text-white mb-2">
+                Star Notes
+              </h3>
+              <p className="text-gray-300 text-sm">
+                Mark your favorite drawings
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="text-blue-500 text-3xl mb-3">🔍</div>
+              <h3 className="text-lg font-semibold text-white mb-2">
+                Smart Search
+              </h3>
+              <p className="text-gray-300 text-sm">
+                Find notes by title and content
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="text-blue-500 text-3xl mb-3">📱</div>
+              <h3 className="text-lg font-semibold text-white mb-2">
+                Responsive Design
+              </h3>
+              <p className="text-gray-300 text-sm">Works on all devices</p>
+            </div>
+            <div className="text-center">
+              <div className="text-blue-500 text-3xl mb-3">🔐</div>
+              <h3 className="text-lg font-semibold text-white mb-2">
+                Secure Auth
+              </h3>
+              <p className="text-gray-300 text-sm">Google & GitHub login</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 px-4 md:px-8">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            Ready to start creating?
+          </h2>
+          <p className="text-xl text-gray-300 mb-8">
+            Join users who are already creating amazing diagrams with SketchFlow
+          </p>
+          <div className="flex flex-col md:flex-row gap-4 justify-center">
+            <Button
+              className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold transition-colors"
+              onClick={() => {
+                if (session?.user) {
+                  router.push("/dashboard");
+                }
+              }}
+            >
+              {session?.user ? "Go to Dashboard" : <AuthDialog />}
+            </Button>
+            <Button
+              variant="outline"
+              className="border-white/20 text-white px-8 py-4 rounded-full text-lg font-semibold transition-colors hover:bg-white/10"
+              onClick={() => {
+                if (session?.user) {
+                  router.push("/dashboard");
+                }
+              }}
+            >
+              {session?.user ? "Create New Note" : "Learn More"}
+            </Button>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
